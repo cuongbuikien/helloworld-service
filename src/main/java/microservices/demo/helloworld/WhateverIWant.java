@@ -22,7 +22,7 @@ public class WhateverIWant {
 		players.add(new Player("Charlie Brown", "pitcher"));
 		players.add(new Player("Michael Jordan", "shortstop"));
 		
-		team = new Team("California", "Peanuts", players);
+		team = new Team("California-feature-MSP-123", "Peanuts", players);
 	}
 	
 	@RequestMapping("/hi")
