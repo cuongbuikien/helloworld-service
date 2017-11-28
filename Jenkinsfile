@@ -6,12 +6,13 @@ node {
             /* do things */
             sh 'javac -version'
             /* sh 'curl http://localhost:9292' */
+            sh 'curl http://192.168.99.100:32638/v2'
         }
         
         def customImage = docker.build("my-image:${env.BUILD_ID}")
 
         customImage.inside {
-            sh 'yum update -y'
+            sh 'sudo yum update -y'
         }
     }
 }
