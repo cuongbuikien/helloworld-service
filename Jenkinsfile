@@ -1,7 +1,8 @@
 pipeline {
     agent any
     tools { 
-        maven 'Maven3' 
+        maven 'Maven3'
+        docker 'Docker-CE-17.09'
     }
 
     stages {
@@ -28,6 +29,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+                docker ps -a
             }
         }
     }
