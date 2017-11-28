@@ -2,7 +2,6 @@ pipeline {
     agent any
     tools { 
         maven 'Maven3'
-        docker 'Docker-CE-17.09'
     }
 
     stages {
@@ -19,6 +18,8 @@ pipeline {
             steps {
                 echo 'Building..'
                 sh 'mvn clean compile package'
+                sh 'docker ps -a'
+                sh 'docker build -f Dockerfile .'
             }
         }
         stage('Test') {
