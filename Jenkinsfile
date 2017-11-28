@@ -5,7 +5,7 @@ node {
         docker.image('mps/tomcat:8').withRun('-p 9292:8080') {
             /* do things */
             sh 'javac -version'
-            sh 'ls /opt/tomcat/'
+            sh 'curl http://localhost:9292'
         }
     }
 }
