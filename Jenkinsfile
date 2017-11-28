@@ -17,6 +17,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
+                docker.build("db", "-f Dockerfile .")
                 sh 'mvn clean compile package'
                 sh 'sudo docker build -f Dockerfile .'
                 sh 'sudo docker ps -a'
