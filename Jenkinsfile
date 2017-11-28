@@ -17,9 +17,13 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'mvn clean compile package'
+                withDockerServer([credentialsId: '', uri: "unix:///var/run/docker.sock"]) {
+                    docker.build("db", "-f Dockerfile .")
+                }
+
                 sh 'docker ps -a'
                 sh 'docker build -f Dockerfile .'
+                sh 'mvn clean compile package'
             }
         }
         stage('Test') {
