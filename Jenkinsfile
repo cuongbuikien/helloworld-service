@@ -10,10 +10,11 @@ node {
         }
         
         docker.withRegistry('http://192.168.99.100:32638') { 
-        def customImage = docker.build("my-image:${env.BUILD_ID}")
+            def customImage = docker.build("my-image:${env.BUILD_ID}")
 
-        /* Push the container to the custom Registry */
-        customImage.push()
+            /* Push the container to the custom Registry */
+            customImage.push()
+        }
         
     }
 }
