@@ -9,10 +9,11 @@ node {
             sh 'curl http://192.168.99.100:32638/v2'
         }
         
+        docker.withRegistry('http://192.168.99.100:32638') { 
         def customImage = docker.build("my-image:${env.BUILD_ID}")
 
-        customImage.inside {
-            sh 'sudo yum update -y'
-        }
+        /* Push the container to the custom Registry */
+        customImage.push()
+        
     }
 }
