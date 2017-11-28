@@ -18,8 +18,8 @@ pipeline {
             steps {
                 echo 'Building..'
                 sh 'mvn clean compile package'
-                sh 'docker ps -a'
                 sh 'docker build -f Dockerfile .'
+                sh 'docker ps -a'
             }
         }
         stage('Test') {
