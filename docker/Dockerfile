@@ -13,13 +13,12 @@ RUN yum -y upgrade && \
     # echo "1ffe998845b594c66db2703dd5f60d88  jdk-8u102-linux-x64.rpm" >> MD5SUM8 && \
     #md5sum -c MD5SUM8 && \
 
-ENV MAVEN_VERSION 3.3.9
-RUN mkdir -p /usr/share/maven \
-  && curl -fsSL http://apache.osuosl.org/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz \
-    | tar -xzC /usr/share/maven --strip-components=1 \
-  && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
-RUN yum install which -y
 RUN yum install git -y
-ENV MAVEN_HOME /usr/share/maven
+RUN yum install which -y
 
-VOLUME /root/.m2
+RUN mkdir -p /root/helloworld-service && cd /root/helloworld-service && \
+    wget http://172.17.0.1:8282/helloworld-0.0.1-SNAPSHOT.jar
+
+CMD ["java", "-jar", "/root/helloworld-service/helloworld-0.0.1-SNAPSHOT.jar"]
+
+EXPOSE 8080
