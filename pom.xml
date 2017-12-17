@@ -48,8 +48,15 @@
 			<artifactId>bootstrap</artifactId>
 			<version>3.3.7</version>
 		</dependency>
-		
-		
+
+		<!-- https://mvnrepository.com/artifact/com.lightstreamer/cloudwatch-logback-appender -->
+		<dependency>
+			<groupId>com.lightstreamer</groupId>
+			<artifactId>cloudwatch-logback-appender</artifactId>
+			<version>0.11.0</version>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
